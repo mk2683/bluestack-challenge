@@ -20,7 +20,6 @@ const DashBoard = ({localeString}) => {
             fetch(`https://mk2683.github.io/Campaign-API/data.json`)
 			.then((res) => res.json())
             .then((json) => {
-                console.log(json);
                 setData(json);
                 //storing data into localstorage(web storage) for performance gain
                 localStorage.setItem('campaignData', JSON.stringify(json));
