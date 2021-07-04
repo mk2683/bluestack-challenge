@@ -11,7 +11,7 @@ import superjewels from '../assets/images/superjewels.png';
 import moleslayer from '../assets/images/moleslayer.png';
 
 //using React lazy to dynamically load component (for page performance/reduce TTFB)
-
+const PopUp = React.lazy(() => import('./PopUp'));
 const DatePicker = React.lazy(() => import('react-datepicker'));
 
 const DataTable = ({ data, setData, tableData, localeString, activeTab }) => {
@@ -29,7 +29,7 @@ const DataTable = ({ data, setData, tableData, localeString, activeTab }) => {
     const updateData = (date, rowdata) => {
         let newRowData = { ...rowdata, createdOn: date.toDateString() };
         let newData = tableData.map((data) => {
-            if (data.name != newRowData.name) return data;
+            if (data.name !== newRowData.name) return data;
             else {
                 return newRowData
             }
@@ -52,20 +52,21 @@ const DataTable = ({ data, setData, tableData, localeString, activeTab }) => {
             case 'mancalamix': campaignImage = mancalamix; break;
             case 'pubg': campaignImage = pubg; break;
             case 'superjewels': campaignImage = superjewels; break;
-            case 'moleslayer': campaignImage = moleslayer; break;
+            default : campaignImage = moleslayer;
         }
         return (
-            <tr id={"row"+i+1} className="data-row">
+            <tr id={"row"+i+1} key={rowdata.name} className="data-row">
                 <td >
                     <div  className="dark-text">{new Date(rowdata.createdOn).toDateString()}</div>
-                    {activeTab == 'upcoming' && <div className="campaign-status">{diffDaysRounded} days ahead</div>}
-                    {activeTab == 'past' && <div className="campaign-status">{diffDaysRounded} days before</div>}
-                    {activeTab == 'live' && <div className="campaign-status">Ongoing</div>}
+                    {activeTab === 'upcoming' && <div className="campaign-status">{diffDaysRounded} days ahead</div>}
+                    {activeTab === 'past' && <div className="campaign-status">{diffDaysRounded} days before</div>}
+                    {activeTab === 'live' && <div className="campaign-status">Ongoing</div>}
                 </td>
                 <td className="campaignColumn">
                     <img
                         className="rowCampaignIcon"
                         src={campaignImage}
+                        alt="Event"
                     />
                     <div className="rowCampaignNameWrapper">
                         <div className="rowCampaignName">{rowdata.name}</div>
@@ -74,21 +75,21 @@ const DataTable = ({ data, setData, tableData, localeString, activeTab }) => {
                 </td>
                 <td  onClick={() => handlePricingView(rowdata)} className="viewColumn">
                     <div>
-                        <img className="icon" src={Price} /><span className="adjust-text">{localeString.viewPricing}</span>
+                        <img className="icon" src={Price} alt="Price Icon"/><span className="adjust-text">{localeString.viewPricing}</span>
                     </div>
                 </td>
                 
                 <td className="actionColumn">
                     <div>
-                        <img className="icon" src={file} />
+                        <img className="icon" src={file} alt="CSV Icon" />
                         <span className="adjust-text"> CSV</span>
                     </div>
                     <div>
-                        <img className="icon" src={stats} />
+                        <img className="icon" src={stats} alt="Report Icon" />
                         <span className="adjust-text">{localeString.report}</span>
                     </div>
                     <div  className="cursor">
-                        <img onClick={() => toggleDatePicker(rowdata.id)} className="icon" src={calendar} />
+                        <img onClick={() => toggleDatePicker(rowdata.id)} className="icon" src={calendar} alt="Calender Icon" />
                         <span className="adjust-text">{localeString.schedule}</span>
                         {datePicker[ rowdata.id ] &&
                         <Suspense fallback={<div>Loading...</div>}>
@@ -119,7 +120,7 @@ const DataTable = ({ data, setData, tableData, localeString, activeTab }) => {
             
                 {isModalOpen && 
                     <Suspense fallback={<div>Loading...</div>}>
-                        
+                        <PopUp setModalOpen={setModalOpen} data={popUpData} locale={localeString} />
                     </Suspense>
                 }
             </div>) : <div className="emptyHeadline">{localeString.noData}</div>
@@ -133,5 +134,5 @@ DataTable.propTypes = {
 }
 //memo is used to prevent unneccessary re-rendering of the component 
 export default memo(DataTable, (prevProps, nextProps) => {
-    return prevProps.data==nextProps.data
+    return prevProps.data===nextProps.data
 });
