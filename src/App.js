@@ -1,11 +1,16 @@
-import './App.css';
+import React, { useState } from 'react';
+import Header from './components/Header';
+import { localeString } from './config/localisation'
 
-function App() {
+const App = () => {
+  //decalring language state variable
+  const [language, setLanguage] = useState('en')
+  localeString.setLanguage(language);
   return (
-    <div className="App">
-      <h2>Hope Everything is coming</h2>
+    <div className="container App">
+      <Header setLanguage={setLanguage} />
     </div>
-  );
-}
+  )
+};
 
 export default App;
