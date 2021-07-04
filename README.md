@@ -1,4 +1,4 @@
-Campaign Management Dashboard (Hoisted at [https://campaign-management.netlify.app/](https://campaign-management.netlify.app/))
+Campaign Management Dashboard (Hoisted at [https://bluestacks-app.herokuapp.com/](https://bluestacks-app.herokuapp.com/))
 
 To run this project, run the following commands after reaching the destination folder
 
