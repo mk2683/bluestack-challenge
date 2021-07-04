@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import logo from '../assets/images/BlueStacks_Logo.png';
 
 const Header = ({setLanguage}) => {
     const handleLocaleChange = (e) => {
@@ -10,7 +11,7 @@ const Header = ({setLanguage}) => {
     }
     return (
         <div className="header">
-        <img src="/assets/BlueStacks_Logo.png" alt="Bluestack Logo"/>
+        <img src={logo} alt="Bluestack Logo"/>
             <select onChange={handleLocaleChange} className="localSelector" placeholder="Select Language">
                 <option value="en">English</option>
                 <option value="ge">Germany</option>
