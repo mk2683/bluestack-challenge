@@ -1,4 +1,4 @@
-Campaign Management Dashboard (Hoisted at [https://bluestacks-app.herokuapp.com/](https://bluestacks-app.herokuapp.com/))
+Campaign Management Dashboard (Hosted at [https://bluestacks-app.herokuapp.com/](https://bluestacks-app.herokuapp.com/))
 
 To run this project, run the following commands after reaching the destination folder
 
@@ -8,7 +8,7 @@ To run this project, run the following commands after reaching the destination f
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The sample API is hoisted at ([https://mk2683.github.io/Campaign-API/data.json](https://mk2683.github.io/Campaign-API/data.json)).
+The sample API is hosted at ([https://mk2683.github.io/Campaign-API/data.json](https://mk2683.github.io/Campaign-API/data.json)).
 
 Github Repo :[https://github.com/mk2683/bluestack-challenge](https://github.com/mk2683/bluestack-challenge) 
 
