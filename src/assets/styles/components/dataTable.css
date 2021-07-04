@@ -51,8 +51,11 @@ td span img{
     width:fit-content;
     padding: 7px;
     border-radius: 5px;
+    opacity: 1;
+    transition: opacity 3s;
     background-color: #F1F1F4;
 }
+
 .rowCampaignName{
     font-size: 12px;
     width: 80px;
@@ -80,7 +83,9 @@ td span img{
 .viewColumn{
     cursor: pointer;
     color:#7788A3;
-    min-width: 150px;;
+    min-width: 150px;
+    margin: 0;
+    padding: 0;
 }
 #row0{
     background-color: #F1F1F4;
@@ -91,21 +96,29 @@ td span img{
     vertical-align: center;
     text-transform: uppercase;
     color:#556789;
-    text-align: center;
+    text-align: left;
 }
 .icon{
-    height: 24px;
-    width:18.84px;
+    width: 10%;
+    min-height: 23px;
+    min-width: 23px;
     margin-right: 6px;
-    top: 3px;
+    top: 5px;
+    cursor: pointer;
     position: relative;
 }
+
+.icon-large{
+    width: 20%;
+}
 .adjust-text{
+    vertical-align: center;
     margin-right: 20px;
 }
-/* span{
-    margin-right: 20px;
-} */
+
+.calender-input{
+    margin-top: 10px;
+}
 .rowCampaignNameWrapper{
   margin-left: 6px;
 }
@@ -115,8 +128,6 @@ td span img{
     background-size: contain;
     background-size: cover;
 }
-
-
 
 @media only screen and (max-width: 786px) {
     .table-container{

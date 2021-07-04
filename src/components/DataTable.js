@@ -81,22 +81,24 @@ const DataTable = ({ data, setData, tableData, localeString, activeTab }) => {
                 
                 <td className="actionColumn">
                     <div>
-                        <img className="icon" src={file} alt="CSV Icon" />
+                        <img className="icon icon-large" src={file} alt="CSV Icon" />
                         <span className="adjust-text"> CSV</span>
                     </div>
                     <div>
-                        <img className="icon" src={stats} alt="Report Icon" />
+                        <img className="icon icon-large" src={stats} alt="Report Icon" />
                         <span className="adjust-text">{localeString.report}</span>
                     </div>
                     <div  className="cursor">
                         <img onClick={() => toggleDatePicker(rowdata.id)} className="icon" src={calendar} alt="Calender Icon" />
                         <span className="adjust-text">{localeString.schedule}</span>
+                        <div className="calender-input">
                         {datePicker[ rowdata.id ] &&
                         <Suspense fallback={<div>Loading...</div>}>
                             <DatePicker selected={new Date()} onChange={date => updateData(date, rowdata)} dateFormat="MMMM d, yyyy"
-                            popperPlacement="bottom-start"  popperClassName="date-popup" />
+                            popperPlacement="bottom-start"  popperClassName="date-popup" popperProps={{ positionFixed: true }} />
                         </Suspense>
                         }
+                        </div>
                     </div>
                 </td>
           </tr>

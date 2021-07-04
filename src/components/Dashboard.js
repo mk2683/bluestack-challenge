@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ContainerTab from './ContainerTab';
 import DataTable from './DataTable';
-// import { getJsonURL } from '../config/apiConfig'
-// import {getRequest} from '../utils/apiCalls'
 
 const DashBoard = ({localeString}) => {
     //using state to store the active tab from upcoming/live/past
@@ -53,7 +51,7 @@ const DashBoard = ({localeString}) => {
         }
     }
     return (
-        <div className="dashBoard">
+        <div className="dashboard-container">
             <h1>{localeString.manage}</h1>
             <ContainerTab setActiveTab={setActiveTab} activeTab={activeTab} localeString={localeString}/>
             <DataTable data={tabsData[ activeTab ]} tableData={tableData} activeTab={activeTab} setData={setData} localeString={localeString}/>
